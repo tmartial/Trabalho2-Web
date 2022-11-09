@@ -6,19 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'MyApp/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Recipes</title>
 </head>
 <body>
     {% include 'MyApp/links.html' %}
-    <h1> Recipes list</h1>
-    <tr><th>Nome</th><th>time</th><th>difficulty</th><th>Ações disponíveis</th></tr>
-    {% for pessoa in pessoas %}
+    <div class="container text-center">
+        <h1> Recipes list</h1>
+    </div>
+    <tr><th>Nome</th> <th>time</th> <th>difficulty</th> 
+        <th>URL</th> <th>Origin</th>
+        <th>Disponible actions</th>
+    </tr>
+    {% for recipe in recipes %}
         <tr>
             <td>{{ recipe.nome }}</td><td>{{recipe.time }}</td><td>{{ recipe.difficulty }}</td>
+            </td><td>{{recipe.URL }}</td><td>{{ recipe.origin }}</td>
         </tr>
         {% empty %}
-        <tr><th colspan=
-        "5">Ainda não tem contatos cadastrados</th></tr>
+        <tr><th colspan="5">
+            <br>There is not recipe</th></tr>
         {% endfor %}
 </body>
 </html>

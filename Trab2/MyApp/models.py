@@ -12,11 +12,8 @@ class Recipe(models.Model):
     difficulty = models.IntegerField(
         help_text='Difficulty of this recipe'
     )
-    image = models.ImageField(
-        help_text='Image of the recipe'
-    )
     URL = models.URLField(
-        help_text='URL of the recipe'
+        help_text='URL wikipedia of the recipe'
     )
     origin = models.CharField(
         max_length=100, help_text='Country of the recipe'
