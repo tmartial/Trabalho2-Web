@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'MyApp/css/style.css' %}">
+    <title>Recipes</title>
+</head>
+<body>
+    {% include 'MyApp/links.html' %}
+    <h1> Recipes list</h1>
+    <tr><th>Nome</th><th>time</th><th>difficulty</th><th>Ações disponíveis</th></tr>
+    {% for pessoa in pessoas %}
+        <tr>
+            <td>{{ recipe.nome }}</td><td>{{recipe.time }}</td><td>{{ recipe.difficulty }}</td>
+        </tr>
+        {% empty %}
+        <tr><th colspan=
+        "5">Ainda não tem contatos cadastrados</th></tr>
+        {% endfor %}
+</body>
+</html>
