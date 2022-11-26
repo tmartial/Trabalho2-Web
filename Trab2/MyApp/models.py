@@ -6,10 +6,10 @@ class Recipe(models.Model):
     name = models.CharField(
         max_length=100, help_text='Name of the recipe'
     )
-    time = models.TimeField(
-        help_text='Time to do this recipe'
+    time = models.PositiveIntegerField(
+        help_text='Time to do this recipe in minutes'
     )
-    difficulty = models.IntegerField(
+    difficulty = models.PositiveIntegerField(
         help_text='Difficulty of this recipe'
     )
     URL = models.URLField(
@@ -20,4 +20,4 @@ class Recipe(models.Model):
     )
     
     def __str__(self):
-        return self.nome
+        return self.name

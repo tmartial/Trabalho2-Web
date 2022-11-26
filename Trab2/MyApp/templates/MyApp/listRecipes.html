@@ -14,18 +14,24 @@
     <div class="container text-center">
         <h1> Recipes list</h1>
     </div>
-    <tr><th>Nome</th> <th>time</th> <th>difficulty</th> 
-        <th>URL</th> <th>Origin</th>
+    <table>
+    <tr><th>Nome</th><th>Time</th><th>Difficulty</th> 
+        <th>URL</th><th>Origin</th>
         <th>Disponible actions</th>
     </tr>
-    {% for recipe in recipes %}
-        <tr>
-            <td>{{ recipe.nome }}</td><td>{{recipe.time }}</td><td>{{ recipe.difficulty }}</td>
-            </td><td>{{recipe.URL }}</td><td>{{ recipe.origin }}</td>
-        </tr>
-        {% empty %}
-        <tr><th colspan="5">
-            <br>There is not recipe</th></tr>
+    {% if recipes %}
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.name }}</td> <td>{{recipe.time }}</td> <td>{{ recipe.difficulty }}</td>
+                </td> <td>{{recipe.URL }}</td> <td>{{ recipe.origin }}</td>
+                <td><a href="{% url 'MyApp:atualize-recipe' pk=recipe.id %}">Atualize</a> |
+                </td>
+            </tr>
         {% endfor %}
+    {% else %}
+            <tr><th colspan="5">
+                <br>There is not recipe</th></tr>
+    {% endif %}
+</table>        
 </body>
 </html>
