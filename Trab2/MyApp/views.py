@@ -53,4 +53,13 @@ class RecipeUpdateView(View):
             context = {'recipes': form, }
             return render(request,'MyApp/actualizeRecipe.html', context)
 
+class RecipeDeleteView(View):
+    def get(self, request, pk, *args, **kwargs):
+        recipe = Recipe.objects.get(pk=pk)
+        context = {'recipe': recipe, }
+        return render(request,'MyApp/deleteRecipe.html',context)
 
+    def post(self, request, pk, *args, **kwargs):
+        recipe = Recipe.objects.get(pk=pk)
+        recipe.delete()
+        return HttpResponseRedirect(reverse_lazy("MyApp:list-recipes"))

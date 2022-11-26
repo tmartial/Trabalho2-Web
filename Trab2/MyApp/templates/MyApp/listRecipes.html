@@ -25,6 +25,7 @@
                 <td>{{ recipe.name }}</td> <td>{{recipe.time }}</td> <td>{{ recipe.difficulty }}</td>
                 </td> <td>{{recipe.URL }}</td> <td>{{ recipe.origin }}</td>
                 <td><a href="{% url 'MyApp:atualize-recipe' pk=recipe.id %}">Atualize</a> |
+                    <a href="{% url 'MyApp:remove-recipe' pk=recipe.id%}">Delete</a>
                 </td>
             </tr>
         {% endfor %}

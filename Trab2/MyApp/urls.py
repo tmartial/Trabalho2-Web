@@ -5,6 +5,8 @@ from MyApp import views
 app_name = "MyApp"
 
 urlpatterns = [
+path('remove/<int:pk>/', views.RecipeDeleteView.as_view(),
+    name='remove-recipe'),
 path('atualize/<int:pk>/', views.RecipeUpdateView.as_view(),
     name='atualize-recipe'),
 path('create/', views.RecipeCreateView.as_view(),
