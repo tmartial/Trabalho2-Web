@@ -11,7 +11,7 @@ class Recipe(models.Model):
     name = models.CharField(
         max_length=100, help_text='Name of the recipe'
     )
-    time = models.PositiveIntegerField(
+    timecooking = models.PositiveIntegerField(
         help_text='Time to do this recipe in minutes'
     )
     difficulty = models.CharField(
