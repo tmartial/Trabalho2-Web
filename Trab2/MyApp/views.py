@@ -7,6 +7,7 @@ from django.urls.base import reverse_lazy
 from MyApp.forms import RecipeModel2Form
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import UpdateView
+from MyApp.decoration import unauthenticated_user, allowed_users
 
 # Create your views here.
 
@@ -40,8 +41,6 @@ class RecipeCreateView(View):
             recipe.save()
         return HttpResponseRedirect(reverse_lazy("MyApp:list-recipes"))
         
-
-
 class RecipeUpdateView(View):
     def get(self, request, pk, *args, **kwargs):
         recipes = Recipe.objects.get(pk=pk)

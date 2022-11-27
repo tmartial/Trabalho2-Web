@@ -25,6 +25,6 @@ class Recipe(models.Model):
     origin = models.CharField(
         max_length=100, help_text='Country of the recipe'
     )
-    
+
     def __str__(self):
         return self.name
