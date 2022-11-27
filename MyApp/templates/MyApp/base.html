@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/287/287000.png">
+    <title>E-Cookbook</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>E-Cookbook</h1>
+    </div>
+            <ul class="nav" style="background-color: #ffe4c9;">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'MyApp:home-recipes' %}">Homepage</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'MyApp:list-recipes' %}">Cookbook</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'MyApp:recipe-modification-PW' %}">Modify password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href= "{% url 'MyApp:recipe-DataUser' pk=user.id %}">Complete profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'MyApp:logout-recipe' %}">Logout</a>
+                </li>
+                
+                {% else %}
+                <li class="nav-item ">
+                    <a class="nav-link" href= "{% url 'MyApp:register-recipe' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'MyApp:login-recipe' %}?next={% url 'MyApp:list-recipes' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="container text-center">
+            You are : {% firstof user.username " a visiter" %}
+            {% if not user.is_authenticated %}
+                <br>To have access, to the recipes you have to register or login
+            </div>
+            {% endif %}
+            </div>
+            <hr>
+            {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'MyApp/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" >
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/287/287000.png">
+    <title>Recipes</title>
+</head>
+    <div class="container text-center">
+        <h1>E-Cookbook</h1>
+    </div>
+    {% include 'MyApp/links.html' %}
+    <div class="container text-center">
+        <h2> Recipes list</h2>
+    </div>
+    <table class="table table-striped">
+    <tr>
+        <th>Nome</th><th>Time</th><th>Difficulty</th> 
+        <th>URL</th><th>Origin</th>
+        <th>Actions</th>
+    </tr>
+    {% if recipes %}
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.name }}</td> <td>{{recipe.time }} min</td> <td>{{ recipe.difficulty }}</td>
+                </td> <td><a href="{{recipe.URL }}">{{recipe.URL }}</a></td> <td>{{ recipe.origin }}</td>
+                <td>
+                    <a class="btn btn-warning me-1" href="{% url 'MyApp:atualize-recipe' pk=recipe.id %}">
+                        <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                    </a>
+                    <a class="btn btn-danger" href="{% url 'MyApp:remove-recipe' pk=recipe.id%}">
+                        <i class="fa-solid fa-trash-can fa-lg"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+            <tr><th colspan="5">
+                <br>There is not recipe</th></tr>
+    {% endif %}
+</table>        
+</body>
+</html>
