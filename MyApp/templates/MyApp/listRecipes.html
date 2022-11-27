@@ -24,8 +24,8 @@
         <th>URL</th><th>Origin</th>
         <th>Actions</th>
     </tr>
-    {% if recipes %}
-        {% for recipe in recipes %}
+    {% if cookingrecipes %}
+        {% for recipe in cookingrecipes %}
             <tr>
                 <td>{{ recipe.name }}</td> <td> min</td> <td>{{ recipe.difficulty }}</td>
                 </td> <td><a href="{{recipe.URL }}">{{recipe.URL }}</a></td> <td>{{ recipe.origin }}</td>

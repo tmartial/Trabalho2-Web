@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from MyApp.models import Recipe
+from MyApp.models import CookingRecipes
 from django.views.generic.base import View
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse_lazy
@@ -21,7 +21,7 @@ def controlView(request):
 
 class RecipeListView(View):
     def get(self, request, *args, **kwargs):
-        recipes = Recipe.objects.all()
+        recipes = CookingRecipes.objects.all()
         context = {'recipes': recipes, }
         return render(
             request,
@@ -42,7 +42,7 @@ class RecipeCreateView(View):
         
 class RecipeUpdateView(View):
     def get(self, request, pk, *args, **kwargs):
-        recipes = Recipe.objects.get(pk=pk)
+        recipes = CookingRecipes.objects.get(pk=pk)
         form = RecipeModel2Form(instance=recipes)
         context = {'recipes': recipes, }
         return render(request,'MyApp/actualizeRecipe.html', context)
@@ -60,12 +60,12 @@ class RecipeUpdateView(View):
 
 class RecipeDeleteView(View):
     def get(self, request, pk, *args, **kwargs):
-        recipe = Recipe.objects.get(pk=pk)
+        recipe = CookingRecipes.objects.get(pk=pk)
         context = {'recipe': recipe, }
         return render(request,'MyApp/deleteRecipe.html',context)
 
     def post(self, request, pk, *args, **kwargs):
-        recipe = Recipe.objects.get(pk=pk)
+        recipe = CookingRecipes.objects.get(pk=pk)
         recipe.delete()
         return HttpResponseRedirect(reverse_lazy("MyApp:list-recipes"))
 

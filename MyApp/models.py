@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Recipe(models.Model):
+class CookingRecipes(models.Model):
     diff = (
        ('Easy', ('1')),
        ('Medium', ('2')),

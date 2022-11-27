@@ -1,8 +1,8 @@
 
 from django import forms
-from MyApp.models import Recipe
+from MyApp.models import CookingRecipes
 
 class RecipeModel2Form(forms.ModelForm):
     class Meta:
-        model = Recipe
+        model = CookingRecipes
         fields = '__all__'
