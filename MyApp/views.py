@@ -7,7 +7,6 @@ from django.urls.base import reverse_lazy
 from MyApp.forms import RecipeModel2Form
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import UpdateView
-from MyApp.decoration import unauthenticated_user, allowed_users
 
 # Create your views here.
 
