@@ -27,7 +27,7 @@
     {% if recipes %}
         {% for recipe in recipes %}
             <tr>
-                <td>{{ recipe.name }}</td> <td>{{recipe.timecooking }} min</td> <td>{{ recipe.difficulty }}</td>
+                <td>{{ recipe.name }}</td> <td> min</td> <td>{{ recipe.difficulty }}</td>
                 </td> <td><a href="{{recipe.URL }}">{{recipe.URL }}</a></td> <td>{{ recipe.origin }}</td>
                 <td>
                     <a class="btn btn-warning me-1" href="{% url 'MyApp:atualize-recipe' pk=recipe.id %}">
