@@ -11,6 +11,9 @@ from django.views.generic.edit import UpdateView
 # Create your views here.
 
 def home(request):
+    return render(request, 'MyApp/homepage.html')
+
+def base(request):
     return render(request, 'MyApp/base.html')
 
 def controlView(request):
@@ -80,7 +83,7 @@ def register(request):
     return render(request,'MyApp/register.html', context)
 
 def secretPage(request):
-    return render(request,'MyApp/paginaSecreta.html')
+    return render(request,'MyApp/listRecipes.html')
 
 class MyUpdateView(UpdateView):
     def get(self, request, pk, *args, **kwargs):
