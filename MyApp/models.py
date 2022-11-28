@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class CookingRecipes(models.Model):
+class Recipe(models.Model):
     diff = (
        ('Easy', ('1')),
        ('Medium', ('2')),
@@ -12,7 +12,7 @@ class CookingRecipes(models.Model):
         max_length=100, help_text='Name of the recipe'
     )
     time = models.PositiveIntegerField(
-        help_text='Time to do this recipe in minutes'
+        help_text='Time to do this recipe in minutes', default=30,
     )
     difficulty = models.CharField(
         help_text='Difficulty of this recipe',
