@@ -7,9 +7,12 @@ class CookingRecipes(models.Model):
        ('Easy', ('1')),
        ('Medium', ('2')),
        ('Difficult', ('3')),
-   )
+    )
     name = models.CharField(
         max_length=100, help_text='Name of the recipe'
+    )
+    time = models.PositiveIntegerField(
+        help_text='Time to do this recipe in minutes'
     )
     difficulty = models.CharField(
         help_text='Difficulty of this recipe',
